@@ -48,6 +48,7 @@ const IndexPage = () => {
   const [answer, setAnswer] = useState('')
 
   const ask = () => {
+    setAnswer('')
     openAICompletions(question).then(answer => {
       setAnswer(answer[0].text)
     })
@@ -61,6 +62,7 @@ const IndexPage = () => {
           placeholder="궁금한걸 적어보세요"
           value={question}
           onChange={e => setQuestion(e.target.value)}
+          onPressEnter={ask}
         />
         <Button block onClick={ask}>
           물어보기
